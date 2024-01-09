@@ -1,0 +1,46 @@
+.home {
+  margin-top: -40px;
+}
+
+.home__img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("../../assets/images/background.png");
+}
+
+.home__img_content {
+  padding-left: 40px;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1360px;
+}
+
+h1 {
+  padding-top: 120px;
+  padding-bottom: 50px;
+  color: var(--txt-white, #fff);
+  font-family: Montserrat;
+  font-size: 96px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 110%;
+  max-width: 1200px;
+}
+
+.home__img_button {
+  margin-bottom: 270px;
+  padding: 16px 56px;
+  border: none;
+  border-radius: var(--radius-small, 6px);
+  background: var(--green, #393);
+  color: var(--txt-white, #fff);
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 130%;
+  cursor: pointer;
+}
