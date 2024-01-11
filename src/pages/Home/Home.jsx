@@ -1,24 +1,14 @@
+import { useSelector } from "react-redux";
 import Categories from "../../components/Categories/Categories";
 import GetDiscount from "../../components/GetDiscount/GetDiscount";
 import Sale from "../../components/Sale/Sale";
 import Title from "../../components/Title/Title";
 import styles from "./style.module.css";
-import { useEffect, useState } from "react";
 
 const Home = () => {
-  const [items, setItems] = useState([]);
+  const { list } = useSelector(({ categories }) => categories);
 
-  useEffect(() => {
-    fetch("http://localhost:3333/categories/all")
-      .then((res) => {
-        return res.json();
-      })
-      .then((arr) => {
-        setItems(arr);
-      });
-  }, []);
-
-  let itemsMax = items.filter((el, ind) => {
+  let itemsMax = list.filter((el, ind) => {
     return ind < 4;
   });
 

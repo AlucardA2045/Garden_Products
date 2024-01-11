@@ -6,8 +6,19 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import CategoriesPage from "./pages/CategoriesPage/CategoriesPage";
 import AllProduct from "./pages/AllProduct/AllProduct";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getProducts } from "./storage/slice/productAllSlice";
+import { getCategory } from "./storage/slice/categorySlice";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProducts());
+    dispatch(getCategory());
+  }, [dispatch]);
+
   return (
     <div className="wrapper">
       <Header />

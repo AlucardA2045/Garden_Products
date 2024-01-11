@@ -1,25 +1,28 @@
-import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import Sort from "../../components/Sort/Sort";
 import Product from "../../components/Product/Product";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 const AllProduct = () => {
-  const [itemsAll, setItemsAll] = useState([]);
+  const { list } = useSelector(({ products }) => products);
+
+  const [a, aA] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3333/products/all")
-      .then((res) => {
-        return res.json();
-      })
-      .then((arr) => {
-        setItemsAll(arr);
+    list &&
+      list.forEach((e) => {
+        let b = e.title;
+        aA({ ...e, b });
       });
-  }, []);
+  }, [list]);
+
+  list.length && console.log(a);
 
   return (
     <div className={styles.container}>
       <Sort all="All products" />
-      <Product itemsAll={itemsAll} />
+      <Product itemsAll={list} />
     </div>
   );
 };
