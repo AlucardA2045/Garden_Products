@@ -9,7 +9,7 @@ const Home = () => {
   const { list } = useSelector(({ categories }) => categories);
 
   let itemsMax = list.filter((el, ind) => {
-    return ind < 4;
+    return ind < 5;
   });
 
   return (
@@ -21,10 +21,10 @@ const Home = () => {
         </div>
       </div>
       <div className={styles.container}>
-        <Title Categories="Categories" />
+        <Title Categories="Categories" AllCategories="All categories" />
         <Categories itemsMax={itemsMax} />
         <GetDiscount />
-        <Title Sale="Sale" />
+        <Title Sale="Sale" AllSales="All sales" />
         <Sale />
       </div>
     </div>

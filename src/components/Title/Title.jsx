@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 
-const Title = ({ Sale, Categories }) => {
+const Title = ({ Sale, Categories, AllCategories, AllSales }) => {
   return (
     <div>
       <div className={styles.categories__title}>
@@ -11,7 +11,8 @@ const Title = ({ Sale, Categories }) => {
         <div className={styles.categories__title_block}>
           <div className={styles.categories__title_line}></div>
           <button className={styles.categories__title_button}>
-            All categories
+            {AllCategories}
+            {AllSales}
           </button>
         </div>
       </div>

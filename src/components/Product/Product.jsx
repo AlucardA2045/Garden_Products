@@ -1,6 +1,10 @@
+import { useEffect } from "react";
 import styles from "./styles.module.css";
 
 const Product = ({ items, itemsAll }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [items, itemsAll]);
   return (
     <>
       <div className={styles.block__sale}>

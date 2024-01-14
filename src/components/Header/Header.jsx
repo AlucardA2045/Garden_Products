@@ -25,13 +25,17 @@ const Header = () => {
 
   return (
     <div className={styles.header}>
-      <Link to="/">
+      <Link className={styles.no__active} to="/">
         <img className={styles.header__logo} src={LogoSvg} alt="" />
       </Link>
       <div className={styles.nav}>
         <ul className={styles.nav_list}>
           {nav.map((el, id) => (
-            <Link key={el.name} to={`${el.name2}`}>
+            <Link
+              className={styles.no__active}
+              key={el.name}
+              to={`${el.name2}`}
+            >
               <li className={styles.nav_list_link} key={id}>
                 {el.name}
               </li>
