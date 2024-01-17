@@ -1,49 +1,58 @@
 import LogoSvg from "../../assets/images/logo.svg";
 import CartSvg from "../../assets/images/icon.svg";
 import styles from "./styles.module.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   const nav = [
     {
       name: "Main Page",
-      name2: "/",
+      path: "/",
     },
     {
       name: "Categories",
-      name2: "Categories",
+      path: "Categories",
     },
     {
       name: "All products",
-      name2: "AllProduct",
+      path: "AllProduct",
     },
     {
       name: "All sales",
-      name2: "Allsales",
+      path: "Allsales",
     },
   ];
 
   return (
     <div className={styles.header}>
-      <Link className={styles.no__active} to="/">
+      <NavLink className={styles.no__active} to="/">
         <img className={styles.header__logo} src={LogoSvg} alt="" />
-      </Link>
+      </NavLink>
       <div className={styles.nav}>
         <ul className={styles.nav_list}>
           {nav.map((el, id) => (
-            <Link
-              className={styles.no__active}
+            <NavLink
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? styles.no__active
+                  : isActive
+                  ? styles.active
+                  : styles.no__active
+              }
               key={el.name}
-              to={`${el.name2}`}
+              to={`${el.path}`}
             >
               <li className={styles.nav_list_link} key={id}>
                 {el.name}
               </li>
-            </Link>
+            </NavLink>
           ))}
         </ul>
       </div>
-      <img className={styles.header__cart} src={CartSvg} alt="" />
+      <div>
+        <img className={styles.header__cart} src={CartSvg} alt="" />
+        <div className={styles.round}></div>
+      </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
 
-const Sort = ({ prod, all }) => {
+const Sort = ({ prod, name, all }) => {
   const [open, setOpen] = useState(false);
   const [arrows, setArrows] = useState(false);
   const list = ["by default", "newest", "price: high-low", "price: low-high"];
@@ -83,9 +83,9 @@ const Sort = ({ prod, all }) => {
                     <path
                       d="M16 12.9999L10 7.00004L4 12.9999"
                       stroke="#282828"
-                      stroke-width="1.34998"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="1.34998"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                   </svg>
                 )}

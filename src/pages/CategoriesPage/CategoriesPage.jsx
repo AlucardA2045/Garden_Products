@@ -12,7 +12,13 @@ const CategoriesPage = () => {
         <div></div>
         <p>Categories</p>
       </div>
-      <Categories items={list} />
+      <div className={styles.block__categories}>
+        <ul className={styles.categories__list}>
+          {list.map((el, ind) => (
+            <Categories itemsAll={el} key={ind} />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

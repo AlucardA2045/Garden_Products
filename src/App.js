@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getProducts } from "./storage/slice/productAllSlice";
 import { getCategory } from "./storage/slice/categorySlice";
+import CartProduct from "./pages/CardProduct/CardProduct";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ function App() {
         <Route path="/Categories" element={<CategoriesPage />} />
         <Route path="/AllProduct" element={<AllProduct />} />
         <Route path="/Allsales/:id" element={<Tools />} />
+        <Route path="/CartProduct/:id" element={<CartProduct />} />
       </Routes>
       <Footer />
     </div>
