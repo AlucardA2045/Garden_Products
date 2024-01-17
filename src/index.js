@@ -5,6 +5,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./storage/store";
+import "./assets/fonts/MontserratNunito/Montserrat/Montserrat-VariableFont_wght.ttf";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

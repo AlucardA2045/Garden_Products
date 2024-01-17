@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 
 const Title = ({ Sale, Categories, AllCategories, AllSales }) => {
@@ -10,10 +11,12 @@ const Title = ({ Sale, Categories, AllCategories, AllSales }) => {
         </h2>
         <div className={styles.categories__title_block}>
           <div className={styles.categories__title_line}></div>
-          <button className={styles.categories__title_button}>
-            {AllCategories}
-            {AllSales}
-          </button>
+          <Link to={Categories ? "/Categories" : "/AllSales"}>
+            <button className={styles.categories__title_button}>
+              {AllCategories}
+              {AllSales}
+            </button>
+          </Link>
         </div>
       </div>
     </div>

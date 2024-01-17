@@ -1,74 +1,28 @@
 import styles from "./styles.module.css";
-import { Swiper, SwiperSlide } from "swiper/react";
 
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/pagination";
-
-import "./styles.css";
-
-import { FreeMode, Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import Sort from "../../components/Sort/Sort";
 
-const Sale = () => {
+const AllSales = () => {
   const { list } = useSelector(({ products }) => products);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [list]);
 
   let discont = list.filter((el) => {
     return el.discont_price !== null;
   });
 
-  let discontMax = discont.filter((el, ind) => {
-    return ind < 10;
-  });
-
-  const TwoStyles = `${styles.block__list} "mySwiper"`;
-
-  const breakpoints = () => {
-    return {
-      1400: {
-        slidesPerView: 4,
-        spaceBetween: 29,
-      },
-      1200: {
-        slidesPerView: 3.5,
-        spaceBetween: 0,
-      },
-      1100: {
-        slidesPerView: 3,
-        spaceBetween: 0,
-      },
-      830: {
-        slidesPerView: 2.5,
-        spaceBetween: 0,
-      },
-      640: {
-        slidesPerView: 1.9,
-        spaceBetween: 0,
-      },
-      490: {
-        slidesPerView: 1.4,
-        spaceBetween: 0,
-      },
-    };
-  };
-
   return (
-    <div className={styles.sale}>
+    <div className={styles.container}>
+      <Sort sales="All sales" />
       <div className={styles.block__sale}>
-        <Swiper
-          slidesPerView={1}
-          spaceBetween={29}
-          breakpoints={breakpoints()}
-          freeMode={true}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[FreeMode, Pagination]}
-          className={TwoStyles}
-        >
-          {discontMax.map((el, ind) => (
-            <SwiperSlide className={styles.block__list_link} key={ind}>
+        <ul className={styles.block__list}>
+          {discont.map((el, ind) => (
+            <li className={styles.block__list_link} key={ind}>
               <Link
                 className={styles.no__active}
                 key={ind}
@@ -93,12 +47,12 @@ const Sale = () => {
                   </div>
                 </div>
               </Link>
-            </SwiperSlide>
+            </li>
           ))}
-        </Swiper>
+        </ul>
       </div>
     </div>
   );
 };
 
-export default Sale;
+export default AllSales;

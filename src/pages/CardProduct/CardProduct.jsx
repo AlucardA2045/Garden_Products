@@ -21,8 +21,6 @@ const CartProduct = () => {
 
   const [count, setCount] = useState(1);
 
-  listOne[0] && list[0] && console.log(listOne[0].categoryId);
-
   return (
     <div className={styles.container}>
       {listOne[0] && list[0] && (

@@ -20,6 +20,7 @@
   display: flex;
   align-items: center;
   width: 100%;
+  padding-top: 10px;
 }
 
 .categories__title_line {
@@ -41,4 +42,10 @@
   font-weight: 500;
   line-height: 126%; /* 20.16px */
   width: 144px;
+  cursor: pointer;
+}
+
+.categories__title_button:hover {
+  color: #282828;
+  border: 1px solid #282828;
 }

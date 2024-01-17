@@ -14,7 +14,6 @@ import "swiper/css/pagination";
 import "./styles.css";
 
 import { FreeMode, Pagination } from "swiper/modules";
-import { useEffect, useState } from "react";
 
 const Home = () => {
   const { list } = useSelector(({ categories }) => categories);
@@ -23,40 +22,36 @@ const Home = () => {
     return ind < 5;
   });
 
-  const SCREEN_MS = 600;
-  const SCREEN_MD = 800;
-  const SCREEN_XL = 1200;
-  const SCREEN_XX = 1100;
-  const SCREEN_XXL = 1400;
-
-  const [width, setWidth] = useState(window.innerWidth);
-  const [count, setCount] = useState(4);
-
-  useEffect(() => {
-    const handleResize = (event) => {
-      setWidth(event.target.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    width >= SCREEN_XXL
-      ? setCount(4)
-      : width >= SCREEN_XX
-      ? setCount(3.5)
-      : width >= SCREEN_XL
-      ? setCount(3)
-      : width >= SCREEN_MD
-      ? setCount(2.5)
-      : width >= SCREEN_MS
-      ? setCount(1.9)
-      : setCount(1.3);
-  }, [width]);
-
   const TwoStyles = `${styles.categories__list} "mySwiper" ${styles.swiper__style}`;
+
+  const breakpoints = () => {
+    return {
+      1400: {
+        slidesPerView: 4,
+        spaceBetween: 27.5,
+      },
+      1200: {
+        slidesPerView: 3.5,
+        spaceBetween: 0,
+      },
+      1100: {
+        slidesPerView: 3,
+        spaceBetween: 0,
+      },
+      830: {
+        slidesPerView: 2.5,
+        spaceBetween: 0,
+      },
+      640: {
+        slidesPerView: 1.9,
+        spaceBetween: 0,
+      },
+      490: {
+        slidesPerView: 1.4,
+        spaceBetween: 0,
+      },
+    };
+  };
 
   return (
     <div className={styles.home}>
@@ -69,8 +64,9 @@ const Home = () => {
       <div className={styles.container}>
         <Title Categories="Categories" AllCategories="All categories" />
         <Swiper
-          slidesPerView={count}
-          spaceBetween={30}
+          slidesPerView={1}
+          spaceBetween={27.5}
+          breakpoints={breakpoints()}
           freeMode={true}
           pagination={{
             clickable: true,

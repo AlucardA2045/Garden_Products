@@ -46,13 +46,7 @@ h1 {
 }
 
 .categories__list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-  grid-column-gap: 32px;
-  grid-row-gap: 32px;
   margin-bottom: 76px;
-  list-style: none;
 }
 
 .swiper__style {

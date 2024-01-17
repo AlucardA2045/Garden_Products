@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { getProducts } from "./storage/slice/productAllSlice";
 import { getCategory } from "./storage/slice/categorySlice";
 import CartProduct from "./pages/CardProduct/CardProduct";
+import AllSales from "./pages/AllSales/AllSales";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,7 +28,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Categories" element={<CategoriesPage />} />
         <Route path="/AllProduct" element={<AllProduct />} />
-        <Route path="/Allsales/:id" element={<Tools />} />
+        <Route path="/AllSales" element={<AllSales />} />
+        <Route path="/Categories/:id" element={<Tools />} />
         <Route path="/CartProduct/:id" element={<CartProduct />} />
       </Routes>
       <Footer />

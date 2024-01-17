@@ -12,6 +12,7 @@ const CategoriesPage = () => {
         <div></div>
         <p>Categories</p>
       </div>
+      <h3>Categories</h3>
       <div className={styles.block__categories}>
         <ul className={styles.categories__list}>
           {list.map((el, ind) => (

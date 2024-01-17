@@ -70,9 +70,6 @@
   align-items: flex-end;
 }
 
-.card__price__procent {
-}
-
 .card__price__procent h4 {
   color: var(--txt-white, #fff);
   font-family: Montserrat;
@@ -194,6 +191,10 @@ h5 {
   font-style: normal;
   font-weight: 500;
   line-height: 126%; /* 20.16px */
+}
+
+.top__text p:last-child {
+  color: var(--txt-black, #282828);
 }
 
 .top__text div {

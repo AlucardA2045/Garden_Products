@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
 
-const Sort = ({ prod, name, all }) => {
+const Sort = ({ prod, all, sales }) => {
   const [open, setOpen] = useState(false);
   const [arrows, setArrows] = useState(false);
   const list = ["by default", "newest", "price: high-low", "price: low-high"];
@@ -25,17 +25,20 @@ const Sort = ({ prod, name, all }) => {
             <div></div>
             <p>{prod}</p>
           </div>
-        ) : (
+        ) : all ? (
           <div className={styles.top__text}>
             <p>Main page</p>
             <div></div>
             <p>{all}</p>
           </div>
+        ) : (
+          <div className={styles.top__text}>
+            <p>Main page</p>
+            <div></div>
+            <p>{sales}</p>
+          </div>
         )}
-        <h3>
-          {prod}
-          {all}
-        </h3>
+        <h3>{prod ? prod : all ? all : "Discounted items"}</h3>
         <div className={styles.top__search}>
           <div className={styles.top__search_input}>
             <p>Price</p>
