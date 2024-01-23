@@ -12,14 +12,13 @@ const Product = ({ items, itemsAll }) => {
       <div className={styles.block__sale}>
         <ul className={styles.block__list}>
           {(items || itemsAll).map((el, ind) => (
-            <Link
-              className={styles.no__active}
-              key={ind}
-              to={
-                itemsAll ? `/CartProduct/${ind + 1}` : `/CartProduct/${el.id}`
-              }
-            >
-              <li className={styles.block__list_link} key={ind}>
+            <li className={styles.block__list_link} key={ind}>
+              <button className={styles.cart__hover}>Add to cart</button>
+              <Link
+                className={styles.no__active}
+                key={ind}
+                to={`/CartProduct/${el.id}`}
+              >
                 <div className={styles.block__border}>
                   {el.discont_price ? (
                     <div>
@@ -54,8 +53,8 @@ const Product = ({ items, itemsAll }) => {
                     </div>
                   )}
                 </div>
-              </li>
-            </Link>
+              </Link>
+            </li>
           ))}
         </ul>
       </div>

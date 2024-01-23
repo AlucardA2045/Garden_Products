@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductOne } from "../../storage/slice/productOneSlice";
 import { useParams } from "react-router-dom";
 import { getCategory } from "../../storage/slice/categorySlice";
+import minus from "../../assets/images/minus.svg";
+import plus from "../../assets/images/plus.svg";
 
 const CartProduct = () => {
   const dispatch = useDispatch();
@@ -69,49 +71,14 @@ const CartProduct = () => {
             <div className={styles.card__count}>
               <div>
                 <button>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                  >
-                    <path
-                      d="M5 12H19"
-                      stroke="#8B8B8B"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <img alt="#" src={minus} />
                 </button>
                 <input
                   onChange={(event) => setCount(event.target.value)}
                   value={count}
                 />
                 <button>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                  >
-                    <path
-                      d="M5 12H19"
-                      stroke="#8B8B8B"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M12 5V19"
-                      stroke="#8B8B8B"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <img alt="#" src={plus} />
                 </button>
               </div>
               <button>Add to cart</button>

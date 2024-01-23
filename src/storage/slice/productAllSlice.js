@@ -28,7 +28,15 @@ const productsSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(getProducts.fulfilled, (state, { payload }) => {
-      state.list = payload;
+      state.list = payload.map((el) => {
+        if (el.discont_price) {
+          let priceMax = el.discont_price;
+          return { ...el, priceMax };
+        } else {
+          let priceMax = el.price;
+          return { ...el, priceMax };
+        }
+      });
       state.isLoading = false;
     });
     builder.addCase(getProducts.rejected, (state) => {
@@ -36,5 +44,7 @@ const productsSlice = createSlice({
     });
   },
 });
+
+export const { setListMaxPrice } = productsSlice.actions;
 
 export default productsSlice.reducer;

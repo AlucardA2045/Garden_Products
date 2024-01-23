@@ -3,6 +3,7 @@ import axios from "axios";
 import { BASE_URL } from "../../utils/constants";
 
 export const getCategory = createAsyncThunk(
+  // rehjglkergjgerklg
   "categories/getCategory",
   async (_, thunkAPI) => {
     try {

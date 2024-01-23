@@ -1,18 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./styles.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setCategory,
+  setCheck,
+  setPriceMinus,
+  setPricePlus,
+} from "../../storage/slice/sortSlice";
 
 const Sort = ({ prod, all, sales }) => {
   const [open, setOpen] = useState(false);
   const [arrows, setArrows] = useState(false);
-  const list = ["by default", "newest", "price: high-low", "price: low-high"];
+  const { priceMinus, pricePlus, check, categoryName } = useSelector(
+    (state) => state.sort
+  );
+  const listSort = [
+    "by default",
+    "newest",
+    "price: high-low",
+    "price: low-high",
+  ];
   const [selected, setSelected] = useState(0);
-  const sortName = list[selected];
+  const sortName = listSort[selected];
+
+  const dispatch = useDispatch();
 
   const onClickListItem = (ind) => {
     setSelected(ind);
     setOpen(false);
     setArrows(false);
   };
+
+  useEffect(() => {
+    dispatch(setCategory(sortName));
+  }, [dispatch, sortName]);
 
   return (
     <div>
@@ -42,12 +63,22 @@ const Sort = ({ prod, all, sales }) => {
         <div className={styles.top__search}>
           <div className={styles.top__search_input}>
             <p>Price</p>
-            <input />
-            <input />
+            <input
+              value={priceMinus}
+              onChange={(event) => dispatch(setPriceMinus(event.target.value))}
+            />
+            <input
+              value={pricePlus}
+              onChange={(event) => dispatch(setPricePlus(event.target.value))}
+            />
           </div>
           <div className={styles.top__search_checkbox}>
             <label>Discounted items</label>
-            <input type="checkbox" />
+            <input
+              checked={check}
+              onChange={() => dispatch(setCheck())}
+              type="checkbox"
+            />
           </div>
           <div className={styles.sort}>
             <div className={styles.sort__label}>
@@ -58,7 +89,7 @@ const Sort = ({ prod, all, sales }) => {
                   setArrows(!arrows);
                 }}
               >
-                {sortName}
+                {categoryName}
                 {!arrows ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +128,7 @@ const Sort = ({ prod, all, sales }) => {
             {open && (
               <div className={styles.sort__popup}>
                 <ul>
-                  {list.map((name, ind) => (
+                  {listSort.map((name, ind) => (
                     <li
                       key={name}
                       onClick={() => onClickListItem(ind)}

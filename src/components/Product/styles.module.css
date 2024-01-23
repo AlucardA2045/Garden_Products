@@ -19,6 +19,7 @@
 }
 
 .block__list_link {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,10 +34,13 @@
 
 .block__border {
   max-width: 316px;
-  text-align: left;
   border-radius: var(--radius-big, 12px);
   border: 1px solid var(--grey-divider, #ddd);
   position: relative;
+}
+
+.block__list_link:hover .cart__hover {
+  display: block;
 }
 
 .block__list_info {
@@ -48,6 +52,31 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   height: 26px;
+}
+
+.cart__hover {
+  z-index: 54454;
+  display: none;
+  position: absolute;
+  left: 16px;
+  bottom: 154px;
+  width: 284px;
+  padding: 16px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  left: 16px;
+  bottom: 154px;
+  color: var(--txt-white, #fff);
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 130%; /* 26px */
+  border-radius: var(--radius-small, 6px);
+  background: var(--green, #393);
 }
 
 .block__list_link img {
