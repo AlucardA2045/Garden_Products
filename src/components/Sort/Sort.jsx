@@ -6,7 +6,7 @@ import {
   setCheck,
   setPriceMinus,
   setPricePlus,
-  setNewTextValue, // Импортируем новый action
+  setNewTextValue,
 } from "../../storage/slice/sortSlice";
 
 const Sort = ({ prod, all, isCheck }) => {
@@ -36,8 +36,7 @@ const Sort = ({ prod, all, isCheck }) => {
   }, [dispatch, sortName]);
 
   const handleNewTextChange = (e) => {
-    // Обработчик изменения значения нового input
-    dispatch(setNewTextValue(e.target.value)); // Отправляем новое значение в Redux-стейт
+    dispatch(setNewTextValue(e.target.value)); // Отправляем новое значение
   };
 
   return (

@@ -7,10 +7,9 @@ import SortProducts from "../../components/SortProducts/SortPtoducts"; // Имп
 import Product from "../../components/Product/Product";
 
 const AllSales = () => {
-  // Получение списка товаров из Redux-стейта
+  // Получение списка товаров
   const { list } = useSelector(({ products }) => products);
 
-  // Прокрутка страницы вверх при изменении списка товаров
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [list]);

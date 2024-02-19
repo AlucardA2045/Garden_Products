@@ -34,7 +34,7 @@ const Form = ({ onSubmit }) => {
       errors.email = "Please enter your email.";
     }
 
-    // Проверка корректности email (можно использовать регулярное выражение)
+    // Проверка корректности email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (formData.email && !emailRegex.test(formData.email)) {
       errors.email = "Please enter a valid email address.";

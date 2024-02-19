@@ -59,18 +59,15 @@ const CartProduct = () => {
       {/* Отображение карточки товара */}
       {listOne[0] && (
         <div className="card">
-          {/* Изображение товара */}
           <img
             className="card__block"
             alt="#"
             src={"http://localhost:3333" + listOne[0].image}
           />
           <div className="card__info">
-            {/* Название товара */}
             <h2>{listOne[0].title}</h2>
-            {/* Отображение цены товара */}
             {listOne[0].discont_price ? discountPriceProduct() : priceProduct()}
-            {/* Счетчик товаров и кнопка "Добавить в корзину" */}
+            {/* Счетчик товаров и кнопка Добавить в корзину */}
             <div className="card__count">
               <div>
                 <button>

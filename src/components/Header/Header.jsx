@@ -25,7 +25,7 @@ const Header = () => {
     },
   ];
 
-  // Получаем количество элементов в корзине из Redux хранилища
+  // Получаем количество элементов в корзине
   const cartItemCount = useSelector(
     (state) => state.cartProduct.product.length
   );

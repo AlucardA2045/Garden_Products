@@ -6,7 +6,7 @@ const initialState = {
   priceMinus: "",
   pricePlus: "",
   check: false,
-  newTextValue: "", // Новое поле для значения нового input
+  newTextValue: "",
 };
 
 const sortSlice = createSlice({

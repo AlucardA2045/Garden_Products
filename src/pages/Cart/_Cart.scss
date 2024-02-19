@@ -132,3 +132,40 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.no__cart {
+  display: flex;
+  flex-direction: column;
+}
+
+.no__cart p {
+  color: rgb(40, 40, 40);
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 130%;
+  letter-spacing: 0%;
+  text-align: left;
+  padding-bottom: 32px;
+}
+
+.no__cart button {
+  cursor: pointer;
+  border-radius: 6px;
+  background: rgb(51, 153, 51);
+  justify-content: center;
+  align-items: center;
+  padding: 16px 56px 16px 56px;
+  border: none;
+  color: rgb(255, 255, 255);
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 130%;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.continue-shopping-button {
+  width: fit-content;
+}
