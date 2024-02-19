@@ -1,0 +1,134 @@
+@import "../../mixins/mixin.scss";
+
+.cart__container {
+  max-width: 1360px;
+  margin: 0 auto;
+  width: 100%;
+  padding-bottom: 90px;
+}
+
+.cart {
+  display: flex;
+  gap: 32px;
+  justify-content: space-between;
+}
+
+.products__list {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.order form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.order form input {
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 6px;
+  background: rgb(255, 255, 255);
+  padding: 16px 32px;
+  color: var(--txt-white, #fff);
+  @include text-styles(var(--txt-white, #fff), 20px, 500, 130%);
+}
+
+.order form input::placeholder {
+  @include text-styles(var(rgb(139, 139, 139)), 20px, 500, 130%);
+}
+
+.order form button {
+  padding: 16px 32px;
+  border-radius: 6px;
+  background: rgb(51, 153, 51);
+  border: none;
+  color: rgb(255, 255, 255);
+  @include text-styles(var(rgb(255, 255, 255)), 20px, 600, 130%);
+}
+
+.order h3 {
+  color: rgb(40, 40, 40);
+  font-family: Montserrat;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 110%;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.order h4 {
+  color: rgb(139, 139, 139);
+  font-family: Montserrat;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 130%;
+  letter-spacing: 0%;
+}
+
+.block__order {
+  max-width: 548px;
+  width: 100%;
+}
+
+.order {
+  position: sticky;
+  top: 134px;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  border-radius: 12px;
+  background: rgb(241, 243, 244);
+}
+
+.order__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 32px;
+}
+
+.order__price {
+  color: rgb(40, 40, 40);
+  font-family: Montserrat;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 110%;
+  letter-spacing: 0%;
+  text-align: left;
+}
+
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 1565656;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

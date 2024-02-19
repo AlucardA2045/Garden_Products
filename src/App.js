@@ -12,6 +12,7 @@ import { getProducts } from "./storage/slice/productAllSlice";
 import { getCategory } from "./storage/slice/categorySlice";
 import CartProduct from "./pages/CardProduct/CardProduct";
 import AllSales from "./pages/AllSales/AllSales";
+import Cart from "./pages/Cart/Cart";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function App() {
         <Route path="/AllSales" element={<AllSales />} />
         <Route path="/Categories/:id" element={<Tools />} />
         <Route path="/CartProduct/:id" element={<CartProduct />} />
+        <Route path="/Cart" element={<Cart />} />
       </Routes>
       <Footer />
     </div>

@@ -1,21 +1,27 @@
+@import "../../mixins/mixin.scss";
+
 .home {
   margin-top: -40px;
-}
 
-.home__img {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-image: url("../../assets/images/background.png");
-}
+  &__img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url("../../assets/images/background.png");
 
-.home__img_content {
-  padding-left: 40px;
+    &__content {
+      padding-left: 40px;
+    }
+  }
 }
 
 .container {
   margin: 0 auto;
   max-width: 1360px;
+}
+
+.home__img_content {
+  padding-left: 40px;
 }
 
 h1 {
@@ -27,7 +33,7 @@ h1 {
   font-style: normal;
   font-weight: 700;
   line-height: 110%;
-  max-width: 1200px;
+  max-width: 900px;
 }
 
 .home__img_button {

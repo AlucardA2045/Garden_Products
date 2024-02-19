@@ -1,3 +1,5 @@
+@import "../../mixins/mixin.scss";
+
 .block__list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -11,11 +13,7 @@
   text-decoration: none;
   color: var(--txt-black, #282828);
   text-align: center;
-  font-family: Montserrat;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 130%; /* 26px */
+  @include text-styles(var(--txt-black, #282828), 20px, 500, 130%);
 }
 
 .block__list_link {
@@ -25,11 +23,7 @@
   align-items: center;
   color: var(--txt-black, #282828);
   text-align: center;
-  font-family: Montserrat;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 130%; /* 26px */
+  @include text-styles(var(--txt-black, #282828), 20px, 500, 130%);
 }
 
 .block__border {
@@ -54,6 +48,21 @@
   height: 26px;
 }
 
+.cart__hover:hover {
+  background-color: rgb(40, 40, 40);
+  cursor: pointer;
+}
+
+.cart__hover.clicked {
+  background-color: rgb(255, 255, 255);
+  color: rgb(40, 40, 40);
+}
+
+.cart__hover.clicked:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(40, 40, 40);
+}
+
 .cart__hover {
   z-index: 54454;
   display: none;
@@ -65,16 +74,9 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  position: absolute;
-  left: 16px;
-  bottom: 154px;
   color: var(--txt-white, #fff);
   text-align: center;
-  font-family: Montserrat;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 130%; /* 26px */
+  @include text-styles(var(--txt-white, #fff), 20px, 600, 130%);
   border-radius: var(--radius-small, 6px);
   background: var(--green, #393);
 }
@@ -99,11 +101,7 @@
   border-radius: var(--radius-small, 6px);
   background: var(--green, #393);
   color: var(--txt-white, #fff);
-  font-family: Montserrat;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 130%; /* 26px */
+  @include text-styles(var(--txt-white, #fff), 20px, 600, 130%);
   letter-spacing: 0.6px;
   display: flex;
   padding: 4px 8px;
@@ -115,19 +113,30 @@
 
 .block__list_price_new {
   color: var(--txt-black, #282828);
-  font-family: Montserrat;
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 110%; /* 44px */
+  @include text-styles(var(--txt-black, #282828), 40px, 600, 110%);
 }
 
 .block__list_price_old {
   color: var(--txt-grey, #8b8b8b);
-  font-family: Montserrat;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 130%; /* 26px */
+  @include text-styles(var(--txt-grey, #8b8b8b), 20px, 500, 130%);
   text-decoration-line: strikethrough;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Пример отступа */
+}
+
+.pagination-ul {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination-ul > li > button {
+  border-radius: 50%;
+}
+
+.pagination-ul > li > .Mui-selected {
+  background: #393;
 }

@@ -1,4 +1,4 @@
-import styles from "./styles.module.css";
+import "./_Footer.scss";
 import instagram from "../../assets/images/ic-instagram.svg";
 import whatsapp from "../../assets/images/ic-whatsapp.svg";
 /* import map from "../../assets/images/map.png"; */
@@ -24,15 +24,15 @@ const Footer = () => {
     },
   ];
   return (
-    <div className={styles.footer}>
-      <div className={styles.container}>
-        <h2 className={styles.footer__title}>Contact</h2>
-        <div className={styles.footer__content}>
-          <ul className={styles.footer__info}>
+    <div className="footer">
+      <div className="container">
+        <h2 className="footer__title">Contact</h2>
+        <div className="footer__content">
+          <ul className="footer__info">
             {Contact.map((el, ind) => (
-              <li key={ind} className={styles.footer__info_block}>
+              <li key={ind} className="footer__info_block">
                 {el.name}
-                <div className={styles.footer__info_block_text}>
+                <div className="footer__info_block_text">
                   {el.info}
                   {el.info2}
                 </div>

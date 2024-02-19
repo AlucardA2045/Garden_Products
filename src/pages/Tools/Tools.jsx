@@ -5,6 +5,7 @@ import Product from "../../components/Product/Product";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../../storage/slice/productSlice";
+import OrtNow from "../../components/OrtNow/OrtNow";
 
 const Tools = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,8 @@ const Tools = () => {
     <div className={styles.container}>
       {list.data && (
         <div>
-          <Sort prod={list.category.title} />
+          <OrtNow categoryName={list.category.title} />
+          <Sort prod={list.category.title} isCheck="true" />
           <Product items={list.data} />
         </div>
       )}

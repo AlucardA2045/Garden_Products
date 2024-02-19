@@ -1,3 +1,5 @@
+@import "../../mixins/mixin.scss";
+
 .categories__list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -17,17 +19,14 @@
   text-decoration: none;
   color: var(--txt-black, #282828);
   text-align: center;
-  font-family: Montserrat;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 130%; /* 26px */
+  @include text-styles(var(--txt-black, #282828), 20px, 500, 130%);
 }
 
 .categories__list_link {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 392px;
 }
 
 .categories__list_link img {
@@ -36,4 +35,8 @@
   border-radius: var(--radius-big, 12px);
   background: lightgray 50% / cover no-repeat;
   margin-bottom: 16px;
+}
+
+.swiper-slide {
+  justify-content: flex-start !important;
 }

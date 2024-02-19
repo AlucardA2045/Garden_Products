@@ -1,19 +1,21 @@
-import { useEffect, useState } from "react";
-import styles from "./styles.module.css";
+import React, { useState, useEffect } from "react";
+import "./_Sort.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setCategory,
   setCheck,
   setPriceMinus,
   setPricePlus,
+  setNewTextValue, // Импортируем новый action
 } from "../../storage/slice/sortSlice";
 
-const Sort = ({ prod, all, sales }) => {
+const Sort = ({ prod, all, isCheck }) => {
   const [open, setOpen] = useState(false);
   const [arrows, setArrows] = useState(false);
-  const { priceMinus, pricePlus, check, categoryName } = useSelector(
-    (state) => state.sort
-  );
+  const dispatch = useDispatch();
+  const { priceMinus, pricePlus, check, categoryName, newTextValue } =
+    useSelector((state) => state.sort);
+
   const listSort = [
     "by default",
     "newest",
@@ -22,8 +24,6 @@ const Sort = ({ prod, all, sales }) => {
   ];
   const [selected, setSelected] = useState(0);
   const sortName = listSort[selected];
-
-  const dispatch = useDispatch();
 
   const onClickListItem = (ind) => {
     setSelected(ind);
@@ -35,118 +35,100 @@ const Sort = ({ prod, all, sales }) => {
     dispatch(setCategory(sortName));
   }, [dispatch, sortName]);
 
+  const handleNewTextChange = (e) => {
+    // Обработчик изменения значения нового input
+    dispatch(setNewTextValue(e.target.value)); // Отправляем новое значение в Redux-стейт
+  };
+
   return (
-    <div>
-      <div className={styles.top}>
-        {prod ? (
-          <div className={styles.top__text}>
-            <p>Main page</p>
-            <div></div>
-            <p>Categories</p>
-            <div></div>
-            <p>{prod}</p>
-          </div>
-        ) : all ? (
-          <div className={styles.top__text}>
-            <p>Main page</p>
-            <div></div>
-            <p>{all}</p>
-          </div>
-        ) : (
-          <div className={styles.top__text}>
-            <p>Main page</p>
-            <div></div>
-            <p>{sales}</p>
-          </div>
-        )}
-        <h3>{prod ? prod : all ? all : "Discounted items"}</h3>
-        <div className={styles.top__search}>
-          <div className={styles.top__search_input}>
-            <p>Price</p>
-            <input
-              value={priceMinus}
-              onChange={(event) => dispatch(setPriceMinus(event.target.value))}
-            />
-            <input
-              value={pricePlus}
-              onChange={(event) => dispatch(setPricePlus(event.target.value))}
-            />
-          </div>
-          <div className={styles.top__search_checkbox}>
+    <div className="top">
+      <h3>{prod || all || "Discounted items"}</h3>
+      <div className="top__search">
+        <div className="top__search_input">
+          <p>Price</p>
+          <input
+            value={priceMinus}
+            onChange={(e) => dispatch(setPriceMinus(e.target.value))}
+          />
+          <input
+            value={pricePlus}
+            onChange={(e) => dispatch(setPricePlus(e.target.value))}
+          />
+        </div>
+        {isCheck && (
+          <div className="top__search_checkbox">
             <label>Discounted items</label>
             <input
+              type="checkbox"
               checked={check}
               onChange={() => dispatch(setCheck())}
-              type="checkbox"
             />
           </div>
-          <div className={styles.sort}>
-            <div className={styles.sort__label}>
-              <b>Sorted</b>
-              <span
-                onClick={() => {
-                  setOpen(!open);
-                  setArrows(!arrows);
-                }}
-              >
-                {categoryName}
-                {!arrows ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      d="M16 7L10 12.9998L4 7"
-                      stroke="#282828"
-                      strokeWidth="1.34998"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                  >
-                    <path
-                      d="M16 12.9999L10 7.00004L4 12.9999"
-                      stroke="#282828"
-                      strokeWidth="1.34998"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                )}
-              </span>
-            </div>
-            {open && (
-              <div className={styles.sort__popup}>
-                <ul>
-                  {listSort.map((name, ind) => (
-                    <li
-                      key={name}
-                      onClick={() => onClickListItem(ind)}
-                      className={
-                        selected === ind ? styles.sort__label__popup_active : ""
-                      }
-                    >
-                      {name}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+        )}
+        <div className="sort">
+          <div className="sort__label">
+            <b>Sorted</b>
+            <span
+              onClick={() => {
+                setOpen(!open);
+                setArrows(!arrows);
+              }}
+            >
+              {categoryName}{" "}
+              {!arrows ? (
+                <SortArrow direction="up" />
+              ) : (
+                <SortArrow direction="down" />
+              )}
+            </span>
           </div>
+          {open && (
+            <div className="sort__popup">
+              <ul>
+                {listSort.map((name, ind) => (
+                  <li
+                    key={name}
+                    onClick={() => onClickListItem(ind)}
+                    className={
+                      selected === ind ? "sort__label__popup_active" : ""
+                    }
+                  >
+                    {name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+        <div className="top__search_input">
+          <p>Name</p>
+          <input value={newTextValue} onChange={handleNewTextChange} />
         </div>
       </div>
     </div>
   );
 };
+
+const SortArrow = ({ direction }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    fill="none"
+  >
+    <path
+      d={
+        direction === "up"
+          ? "M16 7L10 12.9998L4 7"
+          : "M16 12.9999L10 7.00004L4 12.9999"
+      }
+      stroke="#282828"
+      strokeWidth="1.34998"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
 export default Sort;

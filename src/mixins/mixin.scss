@@ -1,0 +1,25 @@
+$radius-small: 6px;
+
+@mixin text-styles($color, $size, $weight, $line-height) {
+  color: $color;
+  font-family: Montserrat;
+  font-size: $size;
+  font-style: normal;
+  font-weight: $weight;
+  line-height: $line-height;
+}
+
+@mixin block-list-discont-styles {
+  position: absolute;
+  border-radius: $radius-small;
+  background: var(--green, #393);
+  color: var(--txt-white, #fff);
+  @include text-styles(var(--txt-white, #fff), 20px, 600, 130%);
+  letter-spacing: 0.6px;
+  display: flex;
+  padding: 4px 8px;
+  justify-content: flex-end;
+  align-items: flex-start;
+  right: 16px;
+  top: 16px;
+}

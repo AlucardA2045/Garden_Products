@@ -1,0 +1,91 @@
+@import "../../mixins/mixin.scss";
+
+.discount__block {
+  margin-top: 60px;
+  text-align: center;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.discount__block h2 {
+  padding-top: 32px;
+  padding-bottom: 24px;
+  color: var(--txt-white, #fff);
+  text-align: center;
+  @include text-styles(var(--txt-white, #fff), 64px, 700, 110%);
+}
+
+.discount__block_info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.discount__block_info form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+
+.discount__block_info form input {
+  padding: 16px 32px;
+  border-radius: var(--radius-small, 6px);
+  border: 1px solid var(--white, #fff);
+  background: transparent;
+  color: var(--txt-white, #fff);
+  @include text-styles(var(--txt-white, #fff), 20px, 500, 130%);
+}
+
+.discount__block_info form input::placeholder {
+  @include text-styles(var(--txt-white, #fff), 20px, 500, 130%);
+}
+
+.discount__block_info form button {
+  padding: 16px 32px;
+  border-radius: var(--radius-small, 6px);
+  background: var(--white, #fff);
+  border: none;
+  color: var(--txt-black, #282828);
+  @include text-styles(var(--txt-black, #282828), 20px, 600, 130%);
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 1565656;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

@@ -4,10 +4,11 @@
   justify-content: space-between;
   gap: 32px;
   padding-top: 60px;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 }
 
 .categories__title h2 {
+  white-space: nowrap;
   color: var(--txt-black, #282828);
   font-family: Montserrat;
   font-size: 64px;
@@ -31,7 +32,6 @@
 
 .categories__title_button {
   padding: 8px 16px;
-  border: none;
   background: none;
   border-radius: var(--radius-small, 6px);
   border: 1px solid var(--grey-divider, #ddd);
@@ -43,9 +43,9 @@
   line-height: 126%; /* 20.16px */
   width: 144px;
   cursor: pointer;
-}
 
-.categories__title_button:hover {
-  color: #282828;
-  border: 1px solid #282828;
+  &:hover {
+    color: #282828;
+    border: 1px solid #282828;
+  }
 }

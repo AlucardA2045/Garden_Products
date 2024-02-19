@@ -1,20 +1,37 @@
 import { Link } from "react-router-dom";
-import styles from "./styles.module.css";
+import "./_Title.scss";
 
-const Title = ({ Sale, Categories, AllCategories, AllSales }) => {
+const Title = ({
+  Sale,
+  Categories,
+  AllCategories,
+  AllSales,
+  ShoppingCart,
+  BackTo,
+}) => {
   return (
     <div>
-      <div className={styles.categories__title}>
+      <div className="categories__title">
         <h2>
           {Sale}
           {Categories}
+          {ShoppingCart}
         </h2>
-        <div className={styles.categories__title_block}>
-          <div className={styles.categories__title_line}></div>
-          <Link to={Categories ? "/Categories" : "/AllSales"}>
-            <button className={styles.categories__title_button}>
+        <div className="categories__title_block">
+          <div className="categories__title_line"></div>
+          <Link
+            to={
+              Categories
+                ? "/Categories"
+                : AllSales
+                ? "/AllSales"
+                : "/AllProduct"
+            }
+          >
+            <button className="categories__title_button">
               {AllCategories}
               {AllSales}
+              {BackTo}
             </button>
           </Link>
         </div>

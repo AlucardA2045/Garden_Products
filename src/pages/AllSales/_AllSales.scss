@@ -1,0 +1,76 @@
+@import "../../mixins/mixin.scss";
+
+.container {
+  padding-bottom: 50px;
+  margin: 0 auto;
+  max-width: 1360px;
+}
+
+.no__active {
+  @include text-styles(var(--txt-black, #282828), 20px, 500, 130%);
+  text-decoration: none;
+  text-align: center;
+}
+
+.block__list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-column-gap: 32px;
+  grid-row-gap: 32px;
+}
+
+.block__list_link {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  @include text-styles(var(--txt-black, #282828), 20px, 500, 130%);
+
+  img {
+    width: 316px !important;
+    height: 284px !important;
+    border-radius: var(--radius-big, 12px);
+    background: lightgray 50% / cover no-repeat;
+    margin-bottom: 16px;
+  }
+}
+
+.block__border {
+  max-width: 316px;
+  text-align: left;
+  border-radius: var(--radius-big, 12px);
+  border: 1px solid var(--grey-divider, #ddd);
+  position: relative;
+}
+
+.block__list_info {
+  padding: 0 32px 32px 32px;
+
+  .block__list_title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 26px;
+  }
+}
+
+.block__list_price {
+  padding-top: 20px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.block__list_discont {
+  @include block-list-discont-styles;
+}
+
+.block__list_price_new {
+  @include text-styles(var(--txt-black, #282828), 40px, 600, 110%);
+}
+
+.block__list_price_old {
+  @include text-styles(var(--txt-grey, #8b8b8b), 20px, 500, 130%);
+  text-decoration-line: strikethrough;
+}

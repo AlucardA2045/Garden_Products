@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styles from "./styles.module.css";
+import "./_Categories.scss";
 import { useEffect } from "react";
 
 const Categories = ({ itemsAll }) => {
@@ -10,11 +10,11 @@ const Categories = ({ itemsAll }) => {
   return (
     <div>
       <Link
-        className={styles.no__active}
+        className="no__active"
         key={itemsAll.title}
         to={`/Categories/${itemsAll.id}`}
       >
-        <li className={styles.categories__list_link} key={itemsAll}>
+        <li className="categories__list_link" key={itemsAll}>
           <img alt="#" src={"http://localhost:3333" + itemsAll.image} />
           <p>{itemsAll.title}</p>
         </li>

@@ -1,20 +1,17 @@
 import Categories from "../../components/Categories/Categories";
-import styles from "./styles.module.css";
+import OrtNow from "../../components/OrtNow/OrtNow";
+import "./_CategoriesPage.scss";
 import { useSelector } from "react-redux";
 
 const CategoriesPage = () => {
   const { list } = useSelector(({ categories }) => categories);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.top__text}>
-        <p>Main page</p>
-        <div></div>
-        <p>Categories</p>
-      </div>
-      <h3>Categories</h3>
-      <div className={styles.block__categories}>
-        <ul className={styles.categories__list}>
+    <div className="container">
+      <OrtNow allCategoryText="Categories" />
+      <h3 className="text__categories_page">Categories</h3>
+      <div className="block__categories">
+        <ul className="categories__list">
           {list.map((el, ind) => (
             <Categories itemsAll={el} key={ind} />
           ))}

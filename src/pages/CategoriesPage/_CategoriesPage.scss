@@ -1,3 +1,5 @@
+@import "../../mixins/mixin.scss";
+
 .container {
   margin: 0 auto;
   max-width: 1360px;
@@ -9,14 +11,10 @@
   align-items: center;
 }
 
-h3 {
+.text__categories_page {
   margin-bottom: 40px;
   color: var(--txt-black, #282828);
-  font-family: Montserrat;
-  font-size: 64px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 110%; /* 70.4px */
+  @include text-styles(var(--txt-black, #282828), 64px, 700, 110%);
 }
 
 .top__text p {
@@ -29,15 +27,12 @@ h3 {
   border: 1px solid var(--grey-divider, #ddd);
   color: var(--txt-grey, #8b8b8b);
   text-align: center;
-  font-family: Montserrat;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 126%; /* 20.16px */
+  @include text-styles(var(--txt-grey, #8b8b8b), 16px, 500, 126%);
 }
 
 .top__text p:last-child {
   color: var(--txt-black, #282828);
+  @include text-styles(var(--txt-black, #282828), 16px, 500, 126%);
 }
 
 .top__text div {

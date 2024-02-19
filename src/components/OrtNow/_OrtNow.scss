@@ -1,0 +1,46 @@
+@import "../../mixins/mixin.scss";
+
+.top__text {
+  display: flex;
+  margin-bottom: 40px;
+  align-items: center;
+}
+
+.link {
+  display: flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: var(--radius-small, 6px);
+  border: 1px solid var(--grey-divider, #ddd);
+  color: var(--txt-grey, #8b8b8b);
+  text-align: center;
+  @include text-styles(var(--txt-grey, #8b8b8b), 16px, 500, 126%);
+  text-decoration: none;
+}
+
+.top__text p {
+  display: flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: var(--radius-small, 6px);
+  border: 1px solid var(--grey-divider, #ddd);
+  color: var(--txt-grey, #8b8b8b);
+  text-align: center;
+  @include text-styles(var(--txt-grey, #8b8b8b), 16px, 500, 126%);
+}
+
+.top__text p:last-child {
+  color: var(--txt-black, #282828);
+  text-align: center;
+  @include text-styles(var(--txt-black, #282828), 16px, 500, 126%);
+}
+
+.top__text div {
+  width: 16px;
+  height: 1px;
+  background: #ddd;
+}

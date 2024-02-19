@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
-import styles from "./styles.module.css";
+import "./_CardProduct.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductOne } from "../../storage/slice/productOneSlice";
 import { useParams } from "react-router-dom";
 import { getCategory } from "../../storage/slice/categorySlice";
 import minus from "../../assets/images/minus.svg";
 import plus from "../../assets/images/plus.svg";
+import OrtNow from "../../components/OrtNow/OrtNow";
 
 const CartProduct = () => {
   const dispatch = useDispatch();
-
   const { id } = useParams();
 
   useEffect(() => {
+    // Получение данных о выбранном товаре и категориях при загрузке компонента
     dispatch(getProductOne(id));
     dispatch(getCategory());
     window.scrollTo(0, 0);
@@ -23,52 +24,54 @@ const CartProduct = () => {
 
   const [count, setCount] = useState(1);
 
+  // Функция для отображения цены с учетом скидки
+  const discountPriceProduct = () => (
+    <div className="card__price">
+      <h3 className="card__price__normal">{listOne[0].discont_price}$</h3>
+      <h3 className="card__price__discount">{listOne[0].price}$</h3>
+      <div className="card__price__procent">
+        <h4>
+          {Math.round(
+            (listOne[0].discont_price / listOne[0].price) * 100 - 100
+          ) + "%"}
+        </h4>
+      </div>
+    </div>
+  );
+
+  // Функция для отображения цены без скидки
+  const priceProduct = () => (
+    <div className="card__price">
+      <h3 className="card__price__normal">{listOne[0].price}$</h3>
+    </div>
+  );
+
   return (
-    <div className={styles.container}>
+    <div className="container">
+      {/* Отображение местоположения товара на странице */}
       {listOne[0] && list[0] && (
-        <div className={styles.top__text}>
-          <p>Main page</p>
-          <div></div>
-          <p>Categories</p>
-          <div></div>
-          <p>{list[listOne[0].categoryId - 1].title}</p>
-          <div></div>
-          <p>{listOne[0].title}</p>
-        </div>
+        <OrtNow
+          categoryName={list[listOne[0].categoryId - 1].title}
+          categoryId={listOne[0].categoryId}
+          nameProduct={listOne[0].title}
+        />
       )}
+      {/* Отображение карточки товара */}
       {listOne[0] && (
-        <div className={styles.card}>
+        <div className="card">
+          {/* Изображение товара */}
           <img
-            className={styles.card__block}
+            className="card__block"
             alt="#"
             src={"http://localhost:3333" + listOne[0].image}
           />
-          <div className={styles.card__info}>
+          <div className="card__info">
+            {/* Название товара */}
             <h2>{listOne[0].title}</h2>
-            {listOne[0].discont_price ? (
-              <div className={styles.card__price}>
-                <h3 className={styles.card__price__normal}>
-                  {listOne[0].discont_price}$
-                </h3>
-                <h3 className={styles.card__price__discount}>
-                  {listOne[0].price}$
-                </h3>
-                <div className={styles.card__price__procent}>
-                  <h4>
-                    {Math.round(
-                      (listOne[0].discont_price / listOne[0].price) * 100 - 100
-                    ) + "%"}
-                  </h4>
-                </div>
-              </div>
-            ) : (
-              <div className={styles.card__price}>
-                <h3 className={styles.card__price__normal}>
-                  {listOne[0].price}$
-                </h3>
-              </div>
-            )}
-            <div className={styles.card__count}>
+            {/* Отображение цены товара */}
+            {listOne[0].discont_price ? discountPriceProduct() : priceProduct()}
+            {/* Счетчик товаров и кнопка "Добавить в корзину" */}
+            <div className="card__count">
               <div>
                 <button>
                   <img alt="#" src={minus} />
@@ -83,7 +86,8 @@ const CartProduct = () => {
               </div>
               <button>Add to cart</button>
             </div>
-            <h3 className={styles.card__description}>Description</h3>
+            {/* Описание товара */}
+            <h3 className="card__description">Description</h3>
             <p>{listOne[0].description}</p>
             <h5>Read more</h5>
           </div>

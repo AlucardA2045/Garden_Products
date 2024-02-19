@@ -6,6 +6,7 @@ const initialState = {
   priceMinus: "",
   pricePlus: "",
   check: false,
+  newTextValue: "", // Новое поле для значения нового input
 };
 
 const sortSlice = createSlice({
@@ -24,31 +25,18 @@ const sortSlice = createSlice({
     setCheck(state, action) {
       state.check = !state.check;
     },
-    setList(state, action) {
-      state.listProd = (
-        state.categoryName === "price: low-high"
-          ? action.payload.sort((a, b) => {
-              return a.priceMax - b.priceMax;
-            })
-          : state.categoryName === "price: high-low"
-          ? action.payload.sort((a, b) => {
-              return b.priceMax - a.priceMax;
-            })
-          : action.payload
-      ).filter((e) => {
-        if (state.pricePlus) {
-          return (
-            e.priceMax <= state.pricePlus && e.priceMax >= state.priceMinus
-          );
-        } else {
-          return e.priceMax >= state.priceMinus;
-        }
-      });
+    setNewTextValue(state, action) {
+      state.newTextValue = action.payload;
     },
   },
 });
 
-export const { setCategory, setPriceMinus, setPricePlus, setCheck, setList } =
-  sortSlice.actions;
+export const {
+  setCategory,
+  setPriceMinus,
+  setPricePlus,
+  setCheck,
+  setNewTextValue,
+} = sortSlice.actions;
 
 export default sortSlice.reducer;

@@ -18,7 +18,7 @@ export const getProduct = createAsyncThunk(
 const productSlice = createSlice({
   name: "product",
   initialState: {
-    list: [],
+    list: { data: [], category: [] },
     /* filtered: [],
     related: [], */
     isLoading: false,
@@ -28,7 +28,16 @@ const productSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(getProduct.fulfilled, (state, { payload }) => {
-      state.list = payload;
+      state.list.data = payload.data.map((el) => {
+        if (el.discont_price) {
+          let priceMax = el.discont_price;
+          return { ...el, priceMax };
+        } else {
+          let priceMax = el.price;
+          return { ...el, priceMax };
+        }
+      });
+      state.list.category = payload.category;
       state.isLoading = false;
     });
     builder.addCase(getProduct.rejected, (state) => {
