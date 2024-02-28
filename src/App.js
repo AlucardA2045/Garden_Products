@@ -41,7 +41,7 @@ function App() {
       <ScrollToTop
         style={{ position: "fixed", bottom: "20px", right: "20px" }}
         smooth
-        color="blue"
+        color="green"
       />
     </div>
   );
