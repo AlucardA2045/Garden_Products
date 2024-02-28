@@ -43,65 +43,75 @@ const Sort = ({ prod, all, isCheck }) => {
     <div className="top">
       <h3>{prod || all || "Discounted items"}</h3>
       <div className="top__search">
-        <div className="top__search_input">
-          <p>Price</p>
-          <input
-            value={priceMinus}
-            onChange={(e) => dispatch(setPriceMinus(e.target.value))}
-          />
-          <input
-            value={pricePlus}
-            onChange={(e) => dispatch(setPricePlus(e.target.value))}
-          />
-        </div>
-        {isCheck && (
-          <div className="top__search_checkbox">
-            <label>Discounted items</label>
+        <div className="top__search_flex">
+          <div className="top__search_input">
+            <p>Price</p>
             <input
-              type="checkbox"
-              checked={check}
-              onChange={() => dispatch(setCheck())}
+              placeholder="from"
+              value={priceMinus}
+              onChange={(e) => dispatch(setPriceMinus(e.target.value))}
+            />
+            <input
+              placeholder="to"
+              value={pricePlus}
+              onChange={(e) => dispatch(setPricePlus(e.target.value))}
             />
           </div>
-        )}
-        <div className="sort">
-          <div className="sort__label">
-            <b>Sorted</b>
-            <span
-              onClick={() => {
-                setOpen(!open);
-                setArrows(!arrows);
-              }}
-            >
-              {categoryName}{" "}
-              {!arrows ? (
-                <SortArrow direction="up" />
-              ) : (
-                <SortArrow direction="down" />
-              )}
-            </span>
-          </div>
-          {open && (
-            <div className="sort__popup">
-              <ul>
-                {listSort.map((name, ind) => (
-                  <li
-                    key={name}
-                    onClick={() => onClickListItem(ind)}
-                    className={
-                      selected === ind ? "sort__label__popup_active" : ""
-                    }
-                  >
-                    {name}
-                  </li>
-                ))}
-              </ul>
+          {isCheck && (
+            <div className="top__search_checkbox">
+              <label>Discounted items</label>
+              <input
+                type="checkbox"
+                checked={check}
+                onChange={() => dispatch(setCheck())}
+              />
             </div>
           )}
         </div>
-        <div className="top__search_input">
-          <p>Name</p>
-          <input value={newTextValue} onChange={handleNewTextChange} />
+        <div className="top__search_flex">
+          <div className="sort">
+            <div className="sort__label">
+              <b>Sorted</b>
+              <span
+                onClick={() => {
+                  setOpen(!open);
+                  setArrows(!arrows);
+                }}
+              >
+                {categoryName}{" "}
+                {!arrows ? (
+                  <SortArrow direction="up" />
+                ) : (
+                  <SortArrow direction="down" />
+                )}
+              </span>
+            </div>
+            {open && (
+              <div className="sort__popup">
+                <ul>
+                  {listSort.map((name, ind) => (
+                    <li
+                      key={name}
+                      onClick={() => onClickListItem(ind)}
+                      className={
+                        selected === ind ? "sort__label__popup_active" : ""
+                      }
+                    >
+                      {name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+          <div className="top__search_input">
+            <p>Name</p>
+            <input
+              placeholder="name"
+              value={newTextValue}
+              onChange={handleNewTextChange}
+            />
+          </div>
         </div>
       </div>
     </div>

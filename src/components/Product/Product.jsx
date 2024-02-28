@@ -130,14 +130,16 @@ const Product = ({ items }) => {
         </ul>
       </div>
       <div className="pagination-container">
-        <Pagination
-          count={Math.ceil(filteredItems.length / itemsPerPage)}
-          page={currentPage}
-          onChange={handlePageChange}
-          variant="outlined"
-          shape="rounded"
-          classes={{ ul: "pagination-ul" }} // Добавляем пользовательские классы для пагинации
-        />
+        <div className="pagination-inner">
+          <Pagination
+            count={Math.ceil(filteredItems.length / itemsPerPage)}
+            page={currentPage}
+            onChange={handlePageChange}
+            variant="outlined"
+            shape="rounded"
+            classes={{ ul: "pagination-ul" }}
+          />
+        </div>
       </div>
     </>
   );

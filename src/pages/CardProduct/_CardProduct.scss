@@ -111,7 +111,7 @@ $txt-white: #fff;
       }
     }
 
-    button {
+    .CardProduct__button {
       @include text-styles($txt-white, 20px, 600, 130%);
       display: flex;
       width: 316px;
@@ -123,6 +123,23 @@ $txt-white: #fff;
       border-radius: $radius-small;
       background: $green;
       border: none;
+
+      &:hover {
+        background-color: rgb(40, 40, 40);
+        cursor: pointer;
+      }
+
+      &.clicked {
+        background-color: rgb(255, 255, 255);
+        color: rgb(40, 40, 40);
+        border: 1px solid rgb(40, 40, 40);
+        border-radius: 6px;
+
+        &:hover {
+          background-color: rgb(255, 255, 255);
+          color: rgb(40, 40, 40);
+        }
+      }
     }
   }
 

@@ -7,6 +7,10 @@
   grid-column-gap: 32px;
   grid-row-gap: 32px;
   margin-bottom: 106px;
+
+  @media (max-width: 1440px) {
+    grid-template-columns: repeat(auto-fill, minmax(317px, 1fr));
+  }
 }
 
 .no__active {
@@ -64,10 +68,9 @@
 }
 
 .cart__hover {
-  z-index: 54454;
+  z-index: 3443;
   display: none;
   position: absolute;
-  left: 16px;
   bottom: 154px;
   width: 284px;
   padding: 16px 32px;
@@ -79,6 +82,8 @@
   @include text-styles(var(--txt-white, #fff), 20px, 600, 130%);
   border-radius: var(--radius-small, 6px);
   background: var(--green, #393);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .block__list_link img {
@@ -119,16 +124,16 @@
 .block__list_price_old {
   color: var(--txt-grey, #8b8b8b);
   @include text-styles(var(--txt-grey, #8b8b8b), 20px, 500, 130%);
-  text-decoration-line: strikethrough;
+  text-decoration-line: line-through;
 }
 
 .pagination-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px; /* Пример отступа */
+  width: 100%;
+  max-width: 1360px;
+  margin: 20px auto; /* Центрирование */
 }
 
-.pagination-ul {
+.pagination-inner {
   display: flex;
   justify-content: center;
 }

@@ -28,7 +28,15 @@ const productOneSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(getProductOne.fulfilled, (state, { payload }) => {
-      state.listOne = payload;
+      state.listOne = payload.map((el) => {
+        if (el.discont_price) {
+          let priceMax = el.discont_price;
+          return { ...el, priceMax };
+        } else {
+          let priceMax = el.price;
+          return { ...el, priceMax };
+        }
+      });
       state.isLoading = false;
     });
     builder.addCase(getProductOne.rejected, (state) => {

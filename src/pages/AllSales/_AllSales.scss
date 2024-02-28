@@ -15,9 +15,16 @@
 .block__list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(1, 1fr);
   grid-column-gap: 32px;
   grid-row-gap: 32px;
+  margin-bottom: 106px;
+
+  @media (max-width: 1400px) {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(317px, 1fr)
+    ); // Изменено для адаптивности
+  }
 }
 
 .block__list_link {

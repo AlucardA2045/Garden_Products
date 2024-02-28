@@ -7,6 +7,7 @@ import {
   updateProductCount,
   removeProduct,
 } from "../../storage/slice/cartSlice";
+import { Link } from "react-router-dom";
 
 export default function CartCard({ item }) {
   const dispatch = useDispatch();
@@ -40,11 +41,13 @@ export default function CartCard({ item }) {
 
   return (
     <div className={styles.cart_products}>
-      <img
-        className={styles.card__img}
-        alt="#"
-        src={"http://localhost:3333" + item.image}
-      />
+      <Link key={item.id} to={`/CartProduct/${item.id}`}>
+        <img
+          className={styles.card__img}
+          alt="#"
+          src={"http://localhost:3333" + item.image}
+        />
+      </Link>
       <div className={styles.product__info}>
         <div className={styles.product__name}>
           <h4>{item.title}</h4>
@@ -64,16 +67,16 @@ export default function CartCard({ item }) {
           </div>
           {item.discont_price ? (
             <div className={styles.card__price}>
-              <h3 className={styles.card__price__normal}>{`${
-                Number(item.priceMax) * count
-              }`}</h3>
+              <h3 className={styles.card__price__normal}>
+                {`${Math.floor(Number(item.priceMax) * count * 100) / 100}`}
+              </h3>
               <h3 className={styles.card__price__discount}>{item.price}</h3>
             </div>
           ) : (
             <div className={styles.card__price}>
-              <h3 className={styles.card__price__normal}>{`${
-                Number(item.priceMax) * count
-              }`}</h3>
+              <h3 className={styles.card__price__normal}>
+                {`${Math.floor(Number(item.priceMax) * count * 100) / 100}`}
+              </h3>
             </div>
           )}
         </div>

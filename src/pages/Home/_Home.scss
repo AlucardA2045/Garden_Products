@@ -36,6 +36,12 @@ h1 {
   max-width: 900px;
 }
 
+@media (max-width: 715px) {
+  h1 {
+    font-size: 64px;
+  }
+}
+
 .home__img_button {
   margin-bottom: 210px;
   padding: 16px 56px;

@@ -25,7 +25,8 @@ const saveState = (state) => {
 
 const calculateTotalPrice = (products) => {
   return products.reduce(
-    (total, product) => total + product.price * product.count,
+    (total, product) =>
+      total + Math.floor(Number(product.priceMax) * product.count * 100) / 100,
     0
   );
 };
@@ -40,11 +41,15 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     setCountProduct(state, action) {
-      const existingProduct = state.product.find(
-        (e) => e.title === action.payload.title
+      const { id, count } = action.payload;
+      const existingProductIndex = state.product.findIndex(
+        (item) => item.id === id
       );
-      if (existingProduct) {
-        existingProduct.count += 1;
+      if (existingProductIndex !== -1) {
+        // Если товар уже есть в корзине, обновляем его количество
+        state.product[existingProductIndex].count += count;
+      } else if (count) {
+        state.product.push(action.payload);
       } else {
         state.product.push({ ...action.payload, count: 1 });
       }

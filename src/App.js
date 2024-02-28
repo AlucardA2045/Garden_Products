@@ -2,6 +2,7 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import Tools from "./pages/Tools/Tools";
+import ScrollToTop from "react-scroll-to-top";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import CategoriesPage from "./pages/CategoriesPage/CategoriesPage";
@@ -37,6 +38,11 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
+      <ScrollToTop
+        style={{ position: "fixed", bottom: "20px", right: "20px" }}
+        smooth
+        color="blue"
+      />
     </div>
   );
 }

@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import "./_Form.scss";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
-const Form = ({ onSubmit }) => {
-  const [formData, setFormData] = useState({
+const Form = ({ onSubmit, order }) => {
+  const initialFormData = {
     name: "",
     phoneNumber: "",
     email: "",
-  });
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
   const [formErrors, setFormErrors] = useState({
     name: "",
     phoneNumber: "",
@@ -16,14 +20,14 @@ const Form = ({ onSubmit }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    setFormErrors({ ...formErrors, [name]: "" }); // Очищаем ошибки при изменении значения поля
+    setFormErrors({ ...formErrors, [name]: "" }); // Clear errors on input change
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = {};
 
-    // Проверка заполненности полей
+    // Check for empty fields
     if (!formData.name) {
       errors.name = "Please enter your name.";
     }
@@ -34,13 +38,13 @@ const Form = ({ onSubmit }) => {
       errors.email = "Please enter your email.";
     }
 
-    // Проверка корректности email
+    // Check email validity
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (formData.email && !emailRegex.test(formData.email)) {
       errors.email = "Please enter a valid email address.";
     }
 
-    // Проверка длины номера телефона
+    // Check phone number length
     if (
       formData.phoneNumber &&
       (formData.phoneNumber.length < 6 ||
@@ -50,44 +54,54 @@ const Form = ({ onSubmit }) => {
         "Phone number should contain only digits or '+' and should be at least 6 characters.";
     }
 
-    // Если есть ошибки, устанавливаем их и прерываем отправку формы
+    // If there are errors, set them and abort form submission
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
       return;
     }
 
-    onSubmit(formData); // Передаем данные формы в родительский компонент
+    onSubmit(formData); // Pass form data to parent component
+    setFormData(initialFormData); // Reset form data to initial state
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <form onSubmit={handleSubmit} className="form">
+      <TextField
         type="text"
         name="name"
-        placeholder="Name"
+        label="Name"
         value={formData.name}
         onChange={handleChange}
+        variant="outlined"
+        fullWidth
+        error={!!formErrors.name}
+        helperText={formErrors.name}
       />
-      {formErrors.name && <p className="error-message">{formErrors.name}</p>}
-      <input
+      <TextField
         type="tel"
         name="phoneNumber"
-        placeholder="Phone number"
+        label="Phone number"
         value={formData.phoneNumber}
         onChange={handleChange}
+        variant="outlined"
+        fullWidth
+        error={!!formErrors.phoneNumber}
+        helperText={formErrors.phoneNumber}
       />
-      {formErrors.phoneNumber && (
-        <p className="error-message">{formErrors.phoneNumber}</p>
-      )}
-      <input
+      <TextField
         type="email"
         name="email"
-        placeholder="Email"
+        label="Email"
         value={formData.email}
         onChange={handleChange}
+        variant="outlined"
+        fullWidth
+        error={!!formErrors.email}
+        helperText={formErrors.email}
       />
-      {formErrors.email && <p className="error-message">{formErrors.email}</p>}
-      <button type="submit">Get a discount</button>
+      <Button type="submit" variant="contained" color="primary">
+        {order ? order : "Get a discount"}
+      </Button>
     </form>
   );
 };
